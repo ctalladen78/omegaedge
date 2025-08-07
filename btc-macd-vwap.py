@@ -3,7 +3,20 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
+def get_total_start_and_end_time(total_period):
+    """
+    Returns the start and end time for the total period.
 
+    Args:
+        total_period (str): Total period in a format like '1y', '6mo', etc.
+
+    Returns:
+        tuple: Start and end time as datetime objects.
+    """
+    end_time = pd.Timestamp.now()
+    start_time = end_time - pd.Timedelta(total_period)
+    return start_time, end_time
+    
 def calculate_vpoc200(df):
   """
   Calculates the 200-day rolling average of the Volume Point of Control (VPOC).
